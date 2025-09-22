@@ -1,86 +1,85 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slider simple</title>
-  <style>
-    .slider {
-      width: 400px;
-      height: 250px;
-      margin: auto;
-      overflow: hidden;
-      position: relative;
-      border: 2px solid #333;
-      border-radius: 10px;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .slides img {
-      width: 400px;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-
-    button {
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 50%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-<body>
-  <div class="slider">
-    <div class="slides">
-      <img src="https://picsum.photos/id/1015/400/250" alt="1">
-      <img src="https://picsum.photos/id/1016/400/250" alt="2">
-      <img src="https://picsum.photos/id/1018/400/250" alt="3">
-      <img src="https://picsum.photos/id/1020/400/250" alt="4">
-    </div>
-    <div class="buttons">
-      <button id="prev">&#10094;</button>
-      <button id="next">&#10095;</button>
-    </div>
-  </div>
-
-  <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-
-    let index = 0;
-
-    function showSlide() {
-      slides.style.transform = `translateX(${-index * 400}px)`;
+<style>
+    * {
+        box-sizing: border-box;
     }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    img {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+    }
+    .slider {
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        position: relative;
+    }
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    .slides img {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+    }
+    .buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+</style>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="./imgs/1.png" alt="farnaz1">
+            <img src="./imgs/2.png" alt="farnaz2">
+            <img src="./imgs/3.png" alt="farnaz3">
+            <img src="./imgs/4.png" alt="farnaz4">
+            <img src="./imgs/5.png" alt="farnaz5">
+        </div>
+        <div class="buttons">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        const slides = document.querySelector('.slides');
+        const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slides img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
 
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % images.length;
-      showSlide();
-    });
+        let currentIndex = 0;
 
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + images.length) % images.length;
-      showSlide();
-    });
-  </script>
+        function showSlide(){
+            slides.style.transform = `translateX(${-currentIndex * 500}px)`;
+            }
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex-1 + images.length) % images.length;
+            showSlide();
+        });
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showSlide();
+        });
+    </script>
 </body>
 </html>
