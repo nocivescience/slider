@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: aliceblue;
+    }
+    .slider{
+        overflow: hidden;
+        width: 350px;
+        height: 500px;
+        position: relative;
+    }
+    img{
+        width: 350px;
+        height: 500px;
+        object-fit: fill;
+    }
+    .buttons{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        opacity: 70%;
+        transform: translateY(-50%);
+        padding: 0;
+    }
+    .buttons .boton{
+        background-color: black;
+        padding: 10px;
+        color: aliceblue;
+        border: none;
+        border-radius: 5px;
+    }
+    .slides{
+        display: flex;
+        transition: transform 1s ease-in-out;
+    }
+</style>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="./imgs/1.png" alt="mi corazon">
+            <img src="./imgs/2.png" alt="mi corazon">
+        </div>
+        <div class="buttons">
+            <button id="prev" class="boton">&#10094;</button>
+            <button id="next" class="boton">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        const slides= document.querySelector('.slides');
+        const images = document.querySelectorAll('.slides img');
+        let currentIndex= 0
+        const imageWidth= 350;
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        function showSlide(){
+            slides.style.transform = `
+                translateX(${-imageWidth*currentIndex}px)
+            `;
+        }
+        prevBtn.addEventListener('click', ()=>{
+            currentIndex =(currentIndex>0)?currentIndex-1:images.length-1;
+            showSlide();
+        })
+        nextBtn.addEventListener('click', ()=>{
+            currentIndex =(currentIndex<images.length)?currentIndex+1:0;
+            showSlide();
+        })
+    </script>
+</body>
+</html>
