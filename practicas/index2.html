@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .slider {
+        width: 400px;
+        height: 250px;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid grey;
+        border-radius: 10px;
+    }
+    .slides{
+        display: flex;
+        transition: transform .5s ease-in-out;
+    }
+    .slides img{
+        width: 400px;
+        height: 250px;
+        object-fit: cover;
+    }
+    .botones{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+    .botones button{
+        background: black;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        z-index: 2;
+    }
+</style>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="./imgs/5.png" alt="corazon">
+            <img src="./imgs/4.png" alt="amor">
+            <img src="./imgs/3.png" alt="preciosa">
+        </div>
+        <div class="botones">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        const images = document.querySelectorAll('.slides img');
+        const slides= document.querySelector('.slides');
+        const prevBtn= document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index=0;
+        function showSlide(){
+            console.log(index)
+        }
+        nextBtn.addEventListener('click', ()=>{
+            index++;
+            showSlide();
+        });
+        prevBtn.addEventListener('click', ()=>{
+            index--;
+            showSlide();
+        });
+    </script>
+</body>
+</html>

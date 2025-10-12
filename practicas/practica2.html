@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card{
+        width: 200px;
+        height: 170px;
+        border: solid black 2px;
+        border-radius: 7px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .container{
+        position: relative;
+    }
+</style>
+<body>
+    <form id="formaulario" action="">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre">
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="Apellido">
+        </div>
+    </form>
+    <button class="btn">Botón</button>
+    <div class="container"></div>
+    <script>
+        const nombreEl= document.querySelector('#nombre');
+        const apellidoEl= document.querySelector('#apellido');
+        const btnEl = document.querySelector('.btn');
+        const containerEl= document.querySelector('.container');
+        const datas= [];
+        function card(){
+            const card= document.createElement('div');
+            card.className= 'card';
+            containerEl.appendChild(card);
+            datas.push(card);
+            datas.forEach((data, i)=>{
+                data.addEventListener('click', ()=>{
+                    data.style.cssText= `
+                        transform: translateX(110%);
+                        transition: transform 1s ease;
+                    `;
+                    setTimeout(()=>{
+                        data.style.cssText=`
+                            transform: translateX(-50%);
+                            transition: transform 1s ease;
+                        `;
+                    }, 1000)
+                    console.log('hlao');
+                })
+            })
+        };
+        btnEl.addEventListener('click', ()=>{
+            card();
+        })
+    </script>
+</body>
+</html>
